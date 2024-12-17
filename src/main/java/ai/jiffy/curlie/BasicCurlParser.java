@@ -530,7 +530,9 @@ public class BasicCurlParser {
       builder.append(", proxy=");
       builder.append(proxyServer);
       builder.append(", cookies=");
-      builder.append(cookies); 
+      builder.append(cookies);
+      builder.append(", body=");
+      builder.append(postData);
       builder.append("]");
       return builder.toString();
     }
@@ -666,6 +668,7 @@ public class BasicCurlParser {
             CLOptionDescriptor.ARGUMENT_OPTIONAL, VERBOSE_OPT, "verbose mode");
     private static final Pattern deleteLinePattern = Pattern.compile("\r|\n|\r\n");
 
+
     private static final CLOptionDescriptor[] OPTIONS = new CLOptionDescriptor[] {
             D_COMPRESSED_OPT,D_HEADER_OPT, D_METHOD_OPT,D_DATA_OPT, D_DATA_ASCII_OPT, D_DATA_URLENCODE_OPT, D_DATA_RAW_OPT, D_DATA_BINARY_OPT,
             D_FORM_OPT, D_FORM_STRING_OPT, D_USER_AGENT_OPT, D_CONNECT_TIMEOUT_OPT, D_COOKIE_OPT, D_URL_OPT, D_USER_OPT,
@@ -673,7 +676,7 @@ public class BasicCurlParser {
             D_CIPHERS_OPT, D_KEY_OPT, D_KEY_TYPE_OPT, D_GET_OPT, D_DNS_SERVERS_OPT, D_NO_KEEPALIVE_OPT, D_REFERER_OPT,
             D_LOCATION_OPT, D_INCLUDE_OPT, D_INSECURE_OPT, D_HEAD_OPT, D_PROXY_OPT, D_PROXY_USER_OPT, D_PROXY_NTLM_OPT,
             D_PROXY_NEGOTIATE_OPT, D_KEEPALIVETILE_OPT, D_MAX_TIME_OPT, D_OUTPUT_OPT, D_CREATE_DIRS_OPT, D_RAW_OPT,
-            D_INTERFACE_OPT, D_DNS_RESOLVER_OPT, D_LIMIT_RATE_OPT, D_MAX_REDIRS ,D_NOPROXY, D_VERBOSE, D_SILENT
+      D_INTERFACE_OPT, D_DNS_RESOLVER_OPT, D_LIMIT_RATE_OPT, D_MAX_REDIRS ,D_NOPROXY, D_VERBOSE, D_SILENT
     };
 
     public BasicCurlParser() {
@@ -1027,7 +1030,7 @@ public class BasicCurlParser {
 //       } else {
 //           throw new IllegalArgumentException(filePath + " is a directory or does not exist");
      //       }
-     throw new RuntimeException("Please implement this");
+     throw new RuntimeException("File load not implemented: " + filePath);
    }
 
     private static String deleteLineBreak(String postdata) {

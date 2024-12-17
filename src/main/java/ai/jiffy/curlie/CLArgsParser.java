@@ -171,11 +171,10 @@ public final class CLArgsParser {
      */
     private final CLOptionDescriptor getDescriptorFor(final String name) {
         for (int i = 0; i < m_optionDescriptors.length; i++) {
-            if (m_optionDescriptors[i].getName().equals(name)) {
+          if (m_optionDescriptors[i].getName().equals(name.trim())) {
                 return m_optionDescriptors[i];
             }
         }
-
         return null;
     }
 
