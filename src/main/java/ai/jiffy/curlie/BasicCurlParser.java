@@ -961,6 +961,10 @@ public class BasicCurlParser {
        if ("data-urlencode".equals(dataOptionName)) {
            postdata = encodePostdata(postdata);
        } else {
+	 //how to check in java if the a string is empty or null with the standard classes. Just one line.
+	 if(postdata.isEmpty()){
+	   return "";
+	 }
            if (postdata.charAt(0) == '@' && !"data-raw".equals(dataOptionName)) {
                postdata = postdata.substring(1, postdata.length());
                postdata = readFromFile(postdata);
